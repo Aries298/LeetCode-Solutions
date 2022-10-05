@@ -6,7 +6,7 @@ class Solution:
             new_s = ""
             for i in range(len(s)//k):
                 strings.append(s[i*k:(i+1)*k])
-            if len(s)//k != len(s)/k:
+            if len(s) % k != 0:
                 strings.append(s[-(len(s)%k):])
             for num in strings:
                 new_s = new_s+str(sum([int(n) for n in num]))
