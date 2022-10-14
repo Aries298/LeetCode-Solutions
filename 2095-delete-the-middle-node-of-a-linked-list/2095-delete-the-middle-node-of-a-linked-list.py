@@ -16,16 +16,12 @@ class Solution:
                 tmp = tmp.next
             except:
                 break
-        
         index = ceil(size/2)
-        print(index)
         tmp = head
-        
         while tmp and tmp.next:
             index -= 1
             if index == 1:
                 tmp.next = tmp.next.next
             else:
                 tmp = tmp.next
-   
         return head
