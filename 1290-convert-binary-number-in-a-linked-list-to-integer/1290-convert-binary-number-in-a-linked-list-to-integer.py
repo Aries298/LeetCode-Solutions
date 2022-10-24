@@ -9,4 +9,4 @@ class Solution:
         while head:
             num.append(head.val)
             head = head.next
-        return int(''.join([str(n) for n in list((num))]),2)
+        return int(''.join([str(n) for n in list(num)]),2)
