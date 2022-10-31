@@ -1,6 +1,5 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        c = Counter(s)
         ans = 0
         c = Counter(s)
         for val in c.values():
