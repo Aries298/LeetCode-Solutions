@@ -1,11 +1,12 @@
-import bisect
+from collections import deque
+from bisect import insort
 class MedianFinder:
 
     def __init__(self):
-        self.nums = []
+        self.nums = deque()
 
     def addNum(self, num: int) -> None:
-        bisect.insort(self.nums, num)
+        insort(self.nums, num)
         
     def findMedian(self) -> float:
         size = len(self.nums)
@@ -14,7 +15,7 @@ class MedianFinder:
         if size & 1:
             return self.nums[half]
         else:
-            return (self.nums[half-1]+self.nums[half])/2
+            return (self.nums[half - 1] + self.nums[half]) / 2
 
 
 # Your MedianFinder object will be instantiated and called as such:
