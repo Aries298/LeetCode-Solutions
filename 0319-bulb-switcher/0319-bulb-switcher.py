@@ -1,3 +1,5 @@
 class Solution:
     def bulbSwitch(self, n: int) -> int:
-        return int(n ** 0.5)
+        i = 0
+        while i*i <= n: i+=1
+        return i - 1
