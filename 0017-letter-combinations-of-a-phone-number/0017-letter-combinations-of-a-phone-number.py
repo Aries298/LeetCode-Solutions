@@ -14,8 +14,7 @@ digits_dict = {
 
 class Solution:
     def letterCombinations(self, digits: str):
-        digits = list(digits)
-        digits = reversed([digits_dict[num] for num in digits])
+        digits = reversed([digits_dict[num] for num in list(digits)])
         ans = []
         for letter_set in digits:
             new_list = []
