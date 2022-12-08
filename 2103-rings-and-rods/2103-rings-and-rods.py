@@ -4,12 +4,13 @@ class Solution:
         rods = dict()
         for ring in rings:
             try:
-                rods[ring[1]] += ring[0]
+                rods[ring[1]].add(ring[0])
             except:
-                rods[ring[1]] = ring[0]
+                rods[ring[1]] = set()
+                rods[ring[1]].add(ring[0])
         
         ans = 0
         for rod_num, rings_colours in rods.items():
-            if "R" in rings_colours and "G" in rings_colours and "B" in rings_colours:
+            if len(rings_colours) == 3:
                 ans += 1
         return ans
