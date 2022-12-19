@@ -4,14 +4,12 @@ class Solution:
         for n1, n2 in edges:
             graph[n1].append(n2)
             graph[n2].append(n1)
-        
-        def dfs(node, end, seen):
-            if node == end: return True
+        seen = set()
+        def dfs(node):
+            if node == destination: return True
             if node in seen: return False
             seen.add(node)
             for n in graph[node]:
-                if dfs(n, end, seen): return True
+                if dfs(n): return True
             return False
-        
-        seen = set()
-        return dfs(source, destination, seen)
+        return dfs(source)
