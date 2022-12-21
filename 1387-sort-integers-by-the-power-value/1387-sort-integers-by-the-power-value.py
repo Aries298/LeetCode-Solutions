@@ -8,10 +8,4 @@ class Solution:
                 ans += 1
             return ans
         
-        answers_dict = dict()
-        #answers_dict = {num: transform(num) for num in range(lo, hi+1)}
-        for num in range(lo, hi+1):
-            answers_dict[num] = transform(num)
-        answers_dict = dict(sorted(answers_dict.items(), key=lambda item: item[1]))
-        print(answers_dict)
-        return list(answers_dict.keys())[k-1]
+        return list(dict(sorted({num: transform(num) for num in range(lo, hi+1)}.items(), key=lambda item: item[1])).keys())[k-1]
