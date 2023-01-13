@@ -1,19 +1,21 @@
 class Solution:
     def longestPath(self, parent: List[int], s: str) -> int:
-        children = [[] for _ in range(len(s))]
-        for i, j in enumerate(parent):
-            if j >= 0: children[j].append(i)
-        ans = [0]
-        
-        def dfs(i):
-            tmp = [0]
-            for j in children[i]:
-                curr = dfs(j)
-                if s[i] != s[j]:
-                    tmp.append(curr)
-            tmp = nlargest(2, tmp)
-            ans[0] = max(ans[0], sum(tmp) + 1)
-            return max(tmp) + 1
-        
+        tree = defaultdict(list)
+        for end, start in enumerate(parent):
+            tree[start].append(end)
+        ans = 1
+        def dfs(node):
+            nonlocal ans
+            max1 = max2 = 0
+            for nei in tree[node]:
+                neiL = dfs(nei)
+                if s[nei] != s[node]:
+                    if neiL > max1:
+                        max2 = max1
+                        max1 = neiL
+                    elif neiL > max2:
+                        max2 = neiL
+            ans = max(ans, max1+max2+1)
+            return max1 + 1
         dfs(0)
-        return ans[0]
+        return ans
