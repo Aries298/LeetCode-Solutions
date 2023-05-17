@@ -4,10 +4,25 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def pairSum(self, head: Optional[ListNode]) -> int:
-        vals = []
-        while head:
-            vals.append(head.val)
+    def pairSum(self, head):
+        slow = head
+        fast = head
+        maxVal = 0
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        nextNode, prev = None, None
+        while slow:
+            nextNode = slow.next
+            slow.next = prev
+            prev = slow
+            slow = nextNode
+
+        while prev:
+            maxVal = max(maxVal, head.val + prev.val)
+            prev = prev.next
             head = head.next
-        first, second = vals[:int(len(vals)/2)], vals[int(len(vals)/2):][::-1]
-        return max([a+b for a,b in zip(first,second)])
+
+        return maxVal
