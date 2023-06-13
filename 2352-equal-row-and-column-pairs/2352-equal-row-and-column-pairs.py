@@ -1,10 +1,14 @@
 class Solution:
     def equalPairs(self, grid: List[List[int]]) -> int:
-        rows = [row for row in grid]
-        cols = [[row[i] for row in rows] for i in range(len(rows))]
-        intersection = set()
-        for i, row in enumerate(rows):
-            for j, col in enumerate(cols):
-                if row == col: intersection.add((i,j))
-        return len(intersection)
+        m = defaultdict(int)
+        cnt = 0
 
+        for row in grid:
+            m[str(row)] += 1
+        
+        for i in range(len(grid[0])):
+            col = []
+            for j in range(len(grid)):
+                col.append(grid[j][i])
+            cnt += m[str(col)]
+        return cnt
