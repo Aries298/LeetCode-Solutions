@@ -1,0 +1,2 @@
+class Solution:
+    myPow = pow
