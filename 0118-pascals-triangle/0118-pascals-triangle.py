@@ -1,16 +1,25 @@
-class Solution:
-    def getRow(self, rowIndex: int) -> List[int]:
-            if rowIndex == 0:
-                return [1]
-            if rowIndex == 1:
-                return [1,1]
-            if rowIndex == 2:
-                return [1,2,1]
-            arr = self.getRow(rowIndex-1)
-            new_arr = [arr[i]+arr[i+1] for i in range(len(arr)-1)]
-            new_arr.insert(0,arr[0])
-            new_arr.append(arr[-1])
-            return new_arr
-    
-    def generate(self, numRows: int) -> List[List[int]]:     
-        return [self.getRow(row) for row in range(numRows)]
+class Solution(object):
+    def generate(self, numRows):
+        # Create an array list to store the output result...
+        output = []
+        for i in range(numRows):
+            if(i == 0):
+                # Create a list to store the prev triangle value for further addition...
+                # Inserting for the first row & store the prev array to the output array...
+                prev = [1]
+                output.append(prev)
+            else:
+                curr = [1]
+                j = 1
+                # Calculate for each of the next values...
+                while(j < i):
+                    # Inserting the addition of the prev arry two values...
+                    curr.append(prev[j-1] + prev[j])
+                    j+=1
+                # Store the number 1...
+                curr.append(1)
+                # Store the value in the Output array...
+                output.append(curr)
+                # Set prev is equal to curr...
+                prev = curr
+        return output       # Return the output list of pascal values...
