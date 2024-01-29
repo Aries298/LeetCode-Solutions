@@ -1,28 +1,32 @@
 class MyQueue:
-
     def __init__(self):
-        self.s1 = deque()
-        self.s2 = deque()
+        # Enqueue stack
+        self.in_stack = []
+        # Dequeue stack
+        self.out_stack = []
 
-    def push(self, x: int) -> None:
-        self.s2.append(x)
-        for num in self.s1:
-            self.s2.append(num)
-        self.s1, self.s2 = self.s2, deque()
+    def push(self, x):
+        # Enqueue operation
+        self.in_stack.append(x)
 
-    def pop(self) -> int:
-        return self.s1.pop()
+    def pop(self):
+        if not self.out_stack:
+            # Transfer from enqueue stack to dequeue stack
+            while self.in_stack:
+                self.out_stack.append(self.in_stack.pop())
 
-    def peek(self) -> int:
-        return self.s1[-1]
+        # Dequeue operation
+        return self.out_stack.pop()
 
-    def empty(self) -> bool:
-        return not self.s1
+    def peek(self):
+        if not self.out_stack:
+            # Transfer from enqueue stack to dequeue stack
+            while self.in_stack:
+                self.out_stack.append(self.in_stack.pop())
 
+        # Peek operation
+        return self.out_stack[-1]
 
-# Your MyQueue object will be instantiated and called as such:
-# obj = MyQueue()
-# obj.push(x)
-# param_2 = obj.pop()
-# param_3 = obj.peek()
-# param_4 = obj.empty()
+    def empty(self):
+        # Check if both stacks are empty
+        return not self.in_stack and not self.out_stack
