@@ -9,10 +9,8 @@ class Solution:
         while head:
             ans.append(head.val)
             head = head.next
-        ans = ans[int(len(ans)//2):]
-        ans = list(reversed(ans))
-        new_node = ListNode(val=ans[0])
+        ans = list(reversed(ans[int(len(ans)//2):]))
+        new_head = ListNode(val=ans[0])
         for i in range(1,len(ans)):
-            new_node = ListNode(val=ans[i], next=new_node)
-        return new_node
-            
+            new_head = ListNode(val=ans[i], next=new_head)
+        return new_head
