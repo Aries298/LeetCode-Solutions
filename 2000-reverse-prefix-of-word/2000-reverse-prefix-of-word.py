@@ -5,4 +5,3 @@ class Solution:
             return word[:idx+1][::-1]+word[idx+1:]
         except:
             return word
-        
