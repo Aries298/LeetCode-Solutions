@@ -5,24 +5,24 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> people = [1,2], limit = 3
+<pre style="position: relative;"><strong>Input:</strong> people = [1,2], limit = 3
 <strong>Output:</strong> 1
 <strong>Explanation:</strong> 1 boat (1, 2)
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> people = [3,2,2,1], limit = 3
+<pre style="position: relative;"><strong>Input:</strong> people = [3,2,2,1], limit = 3
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> 3 boats (1, 2), (2) and (3)
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> people = [3,5,3,4], limit = 5
+<pre style="position: relative;"><strong>Input:</strong> people = [3,5,3,4], limit = 5
 <strong>Output:</strong> 4
 <strong>Explanation:</strong> 4 boats (3), (3), (4), (5)
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
