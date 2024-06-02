@@ -1,6 +1,4 @@
-from copy import copy
 class Solution:
     def reverseString(self, s: List[str]) -> None:
-        tmp = copy(s)
-        for i in range(len(s)):
-            s[i] = tmp[-i-1]
+        for i in range(len(s)//2):
+            s[i], s[~i] = s[~i], s[i]
